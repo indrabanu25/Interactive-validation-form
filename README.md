@@ -22,15 +22,15 @@ This project demonstrates how client-side form validation can enhance user exper
 
 🧰 Technologies Used
 
-HTML5 – Structure of the form and page.
+1.HTML5 – Structure of the form and page.
 
-CSS3 / Tailwind CSS – Styling and responsive layout.
+2.CSS3 / Tailwind CSS – Styling and responsive layout.
 
-JavaScript (ES6) – Handles validation logic and interactivity.
+3.JavaScript (ES6) – Handles validation logic and interactivity.
 
-Git & GitHub – Version control and project hosting.
+4.Git & GitHub – Version control and project hosting.
 
-(Optional) npx live-server – For local development and testing.
+5.(Optional) npx live-server – For local development and testing.
 
 ⚙️ Setup Instructions
 
