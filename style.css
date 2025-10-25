@@ -1,0 +1,30 @@
+/* Custom styles for validation visuals */
+
+.error-ring {
+  box-shadow: 0 0 0 4px rgba(252, 165, 165, 0.08);
+}
+
+.success-ring {
+  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.06);
+}
+
+.animated {
+  transition: all 0.18s ease-in-out;
+}
+
+/* Password meter color transitions */
+#password-strength-bar, #faculty-password-strength-bar {
+  transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+/* Hide error text by default */
+.hidden {
+  display: none;
+}
+
+/* Force register button to be clickable */
+#registrationForm button[type="submit"],
+#facultyRegistrationForm button[type="submit"] {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+}

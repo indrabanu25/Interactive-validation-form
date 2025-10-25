@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="asset/images.png">
+  <title>Interactive Form Validation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    .form-control small {
+      visibility: hidden;
+      display: block;
+      color: #ef4444;
+    }
+
+    .form-control.error input {
+      border-color: #ef4444;
+    }
+
+    .form-control.error small {
+      visibility: visible;
+    }
+
+    .form-control.success input {
+      border-color: #10b981;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 flex flex-col items-center min-h-screen py-12">
+
+  <!-- ===================== Student / Faculty Form Switcher ===================== -->
+  <div class="w-full max-w-md bg-white p-8 rounded-lg shadow-xl">
+    <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">User Registration</h2>
+
+    <div class="flex justify-center mb-6">
+      <button id="studentBtn" class="px-4 py-2 bg-indigo-600 text-white rounded-l-md">Student</button>
+      <button id="facultyBtn" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-r-md">Faculty</button>
+    </div>
+
+    <!-- Student Registration -->
+    <form id="registrationForm" class="space-y-6">
+      <div class="form-control">
+        <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+        <input type="text" id="username" placeholder="Enter your name" required
+          class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+        <small></small>
+      </div>
+
+      <div class="form-control">
+        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+        <input type="email" id="email" placeholder="user@example.com" required
+          class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+        <small></small>
+      </div>
+
+      <div class="form-control">
+        <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+        <input type="password" id="password" placeholder="Enter password" required
+          class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+        <small></small>
+      </div>
+
+      <div class="form-control">
+        <label for="password2" class="block text-sm font-medium text-gray-700">Confirm Password</label>
+        <input type="password" id="password2" placeholder="Re-enter password" required
+          class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+        <small></small>
+      </div>
+
+      <button type="submit"
+        class="w-full py-2 px-4 bg-indigo-600 text-white font-semibold rounded-md hover:bg-indigo-700">
+        Register
+      </button>
+    </form>
+
+    <!-- Faculty Registration -->
+    <form id="facultyRegistrationForm" class="space-y-6 hidden">
+      <h3 class="text-xl font-bold text-center text-gray-800">Faculty Registration</h3>
+
+      <div class="form-control">
+        <label for="facultyId" class="block text-sm font-medium text-gray-700">Faculty ID</label>
+        <input type="text" id="facultyId" placeholder="Enter Faculty ID" required
+          class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+        <small></small>
+      </div>
+
+      <div class="form-control">
+        <label for="department" class="block text-sm font-medium text-gray-700">Department</label>
+        <input type="text" id="department" placeholder="Enter Department" required
+          class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+        <small></small>
+      </div>
+
+      <div class="form-control">
+        <label for="facultyEmail" class="block text-sm font-medium text-gray-700">Email</label>
+        <input type="email" id="facultyEmail" placeholder="faculty@example.com" required
+          class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+        <small></small>
+      </div>
+
+      <div class="form-control">
+        <label for="facultyPassword" class="block text-sm font-medium text-gray-700">Password</label>
+        <input type="password" id="facultyPassword" placeholder="Enter password" required
+          class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+        <small></small>
+      </div>
+
+      <div class="form-control">
+        <label for="facultyPassword2" class="block text-sm font-medium text-gray-700">Confirm Password</label>
+        <input type="password" id="facultyPassword2" placeholder="Re-enter password" required
+          class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+        <small></small>
+      </div>
+
+      <button type="submit"
+        class="w-full py-2 px-4 bg-indigo-600 text-white font-semibold rounded-md hover:bg-indigo-700">
+        Register Faculty
+      </button>
+    </form>
+
+    <div id="successMessage"
+      class="mt-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-md hidden text-center">
+      Successfully registered!
+    </div>
+  </div>
+
+  <!-- Submitted Data -->
+  <div class="w-full max-w-md bg-white p-8 rounded-lg shadow-xl mt-12">
+    <div class="flex justify-between items-center mb-4">
+      <h3 class="text-xl font-bold text-gray-800">Submitted Data History</h3>
+      <button id="deleteAllBtn"
+        class="px-3 py-1 bg-red-500 text-white text-xs font-semibold rounded-md hover:bg-red-600">
+        Delete All
+      </button>
+    </div>
+
+    <div id="submittedRecords" class="space-y-4">
+      <p id="noRecordsMessage" class="text-gray-500">No records submitted yet.</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
